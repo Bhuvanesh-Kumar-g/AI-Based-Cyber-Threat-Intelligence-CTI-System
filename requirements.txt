@@ -1,0 +1,37 @@
+# Core Web Framework
+flask
+werkzeug
+gunicorn
+
+# HTTP & Utility
+requests
+tqdm
+joblib
+pickle-mixin
+
+# Data & ML
+numpy==1.23.5
+scipy
+pandas
+scikit-learn==1.2.2
+tldextract
+
+# Deep Learning
+torch
+torchvision
+tensorflow
+
+# Audio Processing
+librosa==0.9.2
+
+# Image & Video
+opencv-python
+Pillow
+
+# NLP / Transformers
+transformers
+huggingface-hub
+
+# Google Gemini API
+google-generativeai
+python-dotenv
