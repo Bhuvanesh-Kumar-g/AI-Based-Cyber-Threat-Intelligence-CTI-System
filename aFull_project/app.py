@@ -37,25 +37,35 @@ from email_engine import load_model as load_email_model, analyze_email
 from url_engine import load_model as load_url_model, analyze_url
 
 # --- Gemini AI Configuration ---
+# Load API key from Render Secret File or local file
+def load_gemini_key():
+    # 1️⃣ Render secret file path
+    render_path = "/etc/secrets/gemini_api_key.txt"
+    if os.path.exists(render_path):
+        with open(render_path, "r") as f:
+            return f.read().strip()
+
+    # 2️⃣ Local development file (inside aFull_project)
+    local_path = os.path.join(os.path.dirname(__file__), "gemini_api_key.txt")
+    if os.path.exists(local_path):
+        with open(local_path, "r") as f:
+            return f.read().strip()
+
+    return None
+
+
+GEMINI_API_KEY = load_gemini_key()
 client = None
+
 try:
-    with open("gemini_api_key.txt", "r") as f:
-        GEMINI_API_KEY = f.read().strip()
     if not GEMINI_API_KEY:
-        raise ValueError("API Key is empty in the file.")
+        raise FileNotFoundError("Gemini API key not found in Render or local file.")
+
     client = genai.Client(api_key=GEMINI_API_KEY)
-    print("Gemini AI (New SDK) configured successfully.")
+    print("Gemini AI configured successfully.")
 except Exception as e:
     print(f"ERROR: Could not initialize Gemini AI. Reason: {e}")
-    genai.configure(api_key=GEMINI_API_KEY)
-    print("Gemini AI configured successfully.")
-except FileNotFoundError:
-    GEMINI_API_KEY = None
-    print("WARNING: 'gemini_api_key.txt' not found. AI explanations will be disabled.")
-except Exception as e:
-    GEMINI_API_KEY = None
-    print(f"ERROR: Could not initialize Gemini AI. Explanations disabled. Reason: {e}")
-
+    client = None
 def get_gemini_explanation(analysis_type, verdict, result_data, file_path=None, raw_text=None, context=None, source_url=None):
     if not client:
         return "AI explanations are unavailable. The Gemini API key is not configured."
