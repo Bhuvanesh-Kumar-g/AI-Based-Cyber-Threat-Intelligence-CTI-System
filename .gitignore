@@ -1,0 +1,32 @@
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+*.env
+
+# ===== Node / Frontend (if any) =====
+node_modules/
+dist/
+build/
+.cache/
+
+# ===== Logs / Temp =====
+*.log
+tmp/
+temp/
+*.tmp
+
+# ===== Archives / Backups =====
+*.zip
+*.rar
+*.7z
+aFull_project.rar
