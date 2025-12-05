@@ -2,6 +2,7 @@
 flask
 werkzeug
 gunicorn
+flask-cors
 
 # HTTP & Utility
 requests
