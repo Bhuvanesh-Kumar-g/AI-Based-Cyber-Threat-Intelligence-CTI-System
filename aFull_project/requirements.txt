@@ -16,4 +16,5 @@ huggingface-hub
 joblib
 pandas
 google-generativeai
+gunicorn
 python-dotenv
