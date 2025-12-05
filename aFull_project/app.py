@@ -9,7 +9,7 @@ import json
 import uuid
 from functools import wraps
 from datetime import datetime, timedelta
-from google import genai
+import google.generativeai as genai
 from google.genai import types
 import base64
 from PIL import Image
