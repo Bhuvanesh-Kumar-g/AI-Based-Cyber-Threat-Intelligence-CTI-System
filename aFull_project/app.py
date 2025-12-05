@@ -1,7 +1,8 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, Response, session, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
-import os
 import sys
 import re
 import json
