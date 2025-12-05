@@ -9,8 +9,14 @@ import json
 import uuid
 from functools import wraps
 from datetime import datetime, timedelta
+
+# --- FIXED SECTION ---
+# The error was caused by 'from google.genai import types'
+# We must use 'google.generativeai' to match your installed library.
 import google.generativeai as genai
 from google.generativeai import types
+# ---------------------
+
 import base64
 from PIL import Image
 import io
@@ -21,7 +27,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 import threading
 from threading import Semaphore 
-import yt_dlp 
+import yt_dlp
 # ...
 
 # --- Add project subdirectories to the Python path ---
